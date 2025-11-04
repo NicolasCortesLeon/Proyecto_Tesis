@@ -1,0 +1,30 @@
+# ====================
+# DATOS (NO SUBIR)
+# ====================
+
+# Archivos CASEN
+data/external/casen/
+
+# Scraped data
+data/external/scraped/
+
+# Shapefiles completos
+data/external/shapefiles/
+
+# Datos procesados
+data/interim/
+data/processed/
+data/rawdata/
+
+# ====================
+# PYTHON
+# ====================
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# ====================
+# SISTEMA
+# ====================
+.DS_Store
+Thumbs.db
