@@ -560,12 +560,6 @@ De hecho, podemos observar cómo **no es posible identificar correctamente** la 
 
 ![Distribuciones Antes](docs/images/16LimpiezadeDatos.png)
 
-**Problemas identificados:**
-- ⚠️ Distribuciones completamente distorsionadas
-- 🔴 Valores extremos que ocultan los patrones reales
-- 📉 Imposibilidad de realizar análisis visual efectivo
-- ❌ Datos no confiables para modelado
-
 ---
 
 **🔄 PROCESO: Aplicación de Limpieza**
