@@ -129,7 +129,7 @@ Se utilizaron 3 scripts de Python para extraer datos de diferentes portales:
 
 ![FuentesDatos](docs/images/1FuentesdeDatos.png)
 
-**Variables base extraídas:** Precio 💰 | Baños 🚿 | Dormitorios 🛏️ | Superficie Total 📏 | Superfice Construida 🏗️ | Estacionamientos 🚗 | Latitud 📍 | Longitud 🗺️
+**Variables base extraídas:** Precio 💰 | Baños 🚿 | Dormitorios 🛏️ | Superficie Total 📏 | Superficie Construida 🏗️ | Estacionamientos 🚗 | Latitud 📍 | Longitud 🗺️
 
 ---
 
@@ -140,16 +140,12 @@ Los tres datasets fueron estandarizados y unificados en una única base de datos
 
 ![Unificacion](docs/images/2Unificacion.png)
 
-<td width="33%">
-
 #### 🏛️ Comunas
 **Fuente:** BCN Chile
 
 Luego se utilizo un archivo shapely descargado de la [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapas_vectoriales) para tener los hexagonos de las comunas de todo Chile, para luego ver a que comuna pertenecen las coordenadas de cada casa y agregarla al dataset.
 
 ![Comunas](docs/images/4ConvertirCoordenadasaComunas.png)
-
-</td>
 
 #### 🏥 Hospitales
 **Fuente:** [GeoPortal](https://www.geoportal.cl/geoportal/catalog/36767/Establecimientos%20de%20salud%20de%20Chile%20Agosto%202025)
@@ -184,7 +180,7 @@ Este es el ejemplo de las estaciones de metro extraídas de la región metropoli
 #### 🏙️ Variables Socioeconómicas Comunales
 **Fuente:** [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapoteca/comunas)
 
-Para agregarle más cantidad de variables al modelo e irenriqueciendo el poder predictivo de los modelos, se extrajeron 134 variables asociadas a cada comuna de la página de la [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapoteca/comunas)
+Para agregarle más cantidad de variables al modelo e ir enriqueciendo el poder predictivo de los modelos, se extrajeron 134 variables asociadas a cada comuna de la página de la [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapoteca/comunas)
 
 ![ScrapingInfoComunas](docs/images/9ScrapingInfoComunas.png)
 
