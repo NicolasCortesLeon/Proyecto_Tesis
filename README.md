@@ -10,7 +10,7 @@
 Este proyecto de Data Science se enfoca en la predicción precisa de precios de casas en venta mediante la integración de múltiples fuentes de datos. Utiliza Web Scraping para extraer ofertas de venta de casas de tres portales inmobiliarios, combinando y unificando estos datos con fuentes gubernamentales. El objetivo es entrenar, comparar y optimizar modelos como Random Forest, LightGBM, XGBoost, SVM, Regresión lineal y MLP aplicando Cross-Validation por K-Folders y optimización de hiperparámetros con optuna para ofrecer una tasación robusta y fiable de propiedades.
 
 <p align="center">
-  <img src="docs/images/d44fe91a5c01970cc670c540b9a881dd.gif" alt="Casa Animada" width="300"/> 
+  <img src="docs/images/d44fe91a5c01970cc670c540b9a881dd.gif" alt="Casa Animada" width="600"/> 
 </p>
 
 ---
