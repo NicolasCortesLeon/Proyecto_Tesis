@@ -587,10 +587,10 @@ Luego de la limpieza, **ahora sí es posible observar de buena manera** la forma
 
 **Mejoras logradas:**
 - ✅ **Distribuciones claramente identificables** - Patrones visibles y analizables
-- 📊 **Sesgo positivo (right-skewed)** - Típico de mercados inmobiliarios
+- 📊 **Sesgo positivo** - Cola larga a la derecha
 - 🎯 **Datos representativos** del segmento objetivo ($30M-$900M)
 
-> **📌 Nota Técnica:** La distribución sesgada a la derecha es característica natural de los mercados inmobiliarios, donde la mayoría de propiedades se concentran en rangos medios-bajos de precio, con una cola larga hacia propiedades de mayor valor. Esto refleja la realidad del mercado y **NO debe ser corregido**, ya que es información valiosa para el modelo.
+> La distribución sesgada a la derecha es característica natural de los mercados inmobiliarios, donde la mayoría de propiedades se concentran en rangos medios-bajos de precio, con una cola larga hacia propiedades de mayor valor. Esto refleja la realidad del mercado y **NO debe ser corregido**, ya que es información valiosa para el modelo.
 
 ---
 
