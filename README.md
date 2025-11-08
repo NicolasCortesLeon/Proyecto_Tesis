@@ -10,7 +10,7 @@
 Este proyecto de Data Science se enfoca en la predicción precisa de precios de casas en venta mediante la integración de múltiples fuentes de datos. Utiliza Web Scraping para extraer ofertas de venta de casas de tres portales inmobiliarios, combinando y unificando estos datos con fuentes gubernamentales. El objetivo es entrenar, comparar y optimizar modelos como Random Forest, LightGBM, XGBoost, SVM, Regresión lineal y MLP aplicando Cross-Validation por K-Folders y optimización de hiperparámetros con optuna para ofrecer una tasación robusta y fiable de propiedades.
 
 <p align="center">
-  <img src="docs/images/d44fe91a5c01970cc670c540b9a881dd.gif" alt="Casa Animada" width="300"/> 
+  <img src="docs/images/d44fe91a5c01970cc670c540b9a881dd.gif" alt="Casa Animada" width="600"/> 
 </p>
 
 ---
@@ -129,7 +129,7 @@ Se utilizaron 3 scripts de Python para extraer datos de diferentes portales:
 
 ![FuentesDatos](docs/images/1FuentesdeDatos.png)
 
-**Variables base extraídas:** Precio 💰 | Baños 🚿 | Dormitorios 🛏️ | Superficie Total 📏 | Superfice Construida 🏗️ | Estacionamientos 🚗 | Latitud 📍 | Longitud 🗺️
+**Variables base extraídas:** Precio 💰 | Baños 🚿 | Dormitorios 🛏️ | Superficie Total 📏 | Superficie Construida 🏗️ | Estacionamientos 🚗 | Latitud 📍 | Longitud 🗺️
 
 ---
 
@@ -140,16 +140,12 @@ Los tres datasets fueron estandarizados y unificados en una única base de datos
 
 ![Unificacion](docs/images/2Unificacion.png)
 
-<td width="33%">
-
 #### 🏛️ Comunas
 **Fuente:** BCN Chile
 
 Luego se utilizo un archivo shapely descargado de la [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapas_vectoriales) para tener los hexagonos de las comunas de todo Chile, para luego ver a que comuna pertenecen las coordenadas de cada casa y agregarla al dataset.
 
 ![Comunas](docs/images/4ConvertirCoordenadasaComunas.png)
-
-</td>
 
 #### 🏥 Hospitales
 **Fuente:** [GeoPortal](https://www.geoportal.cl/geoportal/catalog/36767/Establecimientos%20de%20salud%20de%20Chile%20Agosto%202025)
@@ -184,7 +180,7 @@ Este es el ejemplo de las estaciones de metro extraídas de la región metropoli
 #### 🏙️ Variables Socioeconómicas Comunales
 **Fuente:** [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapoteca/comunas)
 
-Para agregarle más cantidad de variables al modelo e irenriqueciendo el poder predictivo de los modelos, se extrajeron 134 variables asociadas a cada comuna de la página de la [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapoteca/comunas)
+Para agregarle más cantidad de variables al modelo e ir enriqueciendo el poder predictivo de los modelos, se extrajeron 134 variables asociadas a cada comuna de la página de la [Biblioteca del Congreso Nacional](https://www.bcn.cl/siit/mapoteca/comunas)
 
 ![ScrapingInfoComunas](docs/images/9ScrapingInfoComunas.png)
 
@@ -560,12 +556,6 @@ De hecho, podemos observar cómo **no es posible identificar correctamente** la 
 
 ![Distribuciones Antes](docs/images/16LimpiezadeDatos.png)
 
-**Problemas identificados:**
-- ⚠️ Distribuciones completamente distorsionadas
-- 🔴 Valores extremos que ocultan los patrones reales
-- 📉 Imposibilidad de realizar análisis visual efectivo
-- ❌ Datos no confiables para modelado
-
 ---
 
 **🔄 PROCESO: Aplicación de Limpieza**
@@ -597,10 +587,10 @@ Luego de la limpieza, **ahora sí es posible observar de buena manera** la forma
 
 **Mejoras logradas:**
 - ✅ **Distribuciones claramente identificables** - Patrones visibles y analizables
-- 📊 **Sesgo positivo (right-skewed)** - Típico de mercados inmobiliarios
+- 📊 **Sesgo positivo** - Cola larga a la derecha
 - 🎯 **Datos representativos** del segmento objetivo ($30M-$900M)
 
-> **📌 Nota Técnica:** La distribución sesgada a la derecha es característica natural de los mercados inmobiliarios, donde la mayoría de propiedades se concentran en rangos medios-bajos de precio, con una cola larga hacia propiedades de mayor valor. Esto refleja la realidad del mercado y **NO debe ser corregido**, ya que es información valiosa para el modelo.
+> La distribución sesgada a la derecha es característica natural de los mercados inmobiliarios, donde la mayoría de propiedades se concentran en rangos medios-bajos de precio, con una cola larga hacia propiedades de mayor valor. Esto refleja la realidad del mercado y **NO debe ser corregido**, ya que es información valiosa para el modelo.
 
 ---
 
