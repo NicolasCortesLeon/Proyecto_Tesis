@@ -570,10 +570,10 @@ Por lo tanto, se aplicó una limpieza exhaustiva de datos en la cual se eliminar
 
 | Métrica | Antes | Después | Cambio |
 |:--------|:-----:|:-------:|:------:|
-| 📝 Total registros | 5,943 | 4,508 | **-1,435** |
-| 📊 Reducción | 100% | 75.8% | **-24.2%** |
+| 📝 Total registros | 5.943 | 4.508 | **-1.435** |
+| 📊 Reducción | 100% | 75,8% | **-24,2%** |
 
-*Se eliminaron 1,435 registros con valores atípicos o errores*
+*Se eliminaron 1.435 registros con valores atípicos o errores*
 
 </div>
 
@@ -606,7 +606,7 @@ El dataset limpio se dividió estratégicamente en conjuntos de entrenamiento y 
 
 | 📊 Conjunto | Porcentaje | Registros |
 |:------------|:----------:|:---------:|
-| 🎓 **Entrenamiento** | 80% | 3,606 |
+| 🎓 **Entrenamiento** | 80% | 3.606 |
 | 🧪 **Prueba** | 20% | 902 |
 | 📝 **Total** | 100% | **4,508** |
 
@@ -637,9 +637,9 @@ Para identificar cualquier problema en el entrenamiento o posible sobreajuste de
 
 | Modelo | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | **R² Promedio** | Desv. Estándar |
 |:-------|:------:|:------:|:------:|:------:|:------:|:---------------:|:--------------:|
-| **Random Forest** | 0.8566 | 0.8395 | 0.8655 | 0.8594 | 0.8738 | **0.8590** | 0.0114 |
-| **XGBoost** | 0.8660 | 0.8384 | 0.8665 | 0.8572 | 0.8710 | **0.8598** | 0.0116 |
-| **LightGBM** | 0.8646 | 0.8411 | 0.8761 | 0.8554 | 0.8739 | **0.8622** | 0.0129 |
+| **Random Forest** | 0,8566 | 0,8395 | 0,8655 | 0,8594 | 0,8738 | **0,8590** | 0,0114 |
+| **XGBoost** | 0,8660 | 0,8384 | 0,8665 | 0,8572 | 0,8710 | **0,8598** | 0,0116 |
+| **LightGBM** | 0,8646 | 0,8411 | 0,8761 | 0,8554 | 0,8739 | **0,8622** | 0,0129 |
 
 </div>
 
@@ -670,11 +670,11 @@ Para optimizar el modelo y mejorar la interpretabilidad, se realizó un **análi
 
 | Ranking | Variable | Promedio | Random Forest | XGBoost | LightGBM | Categoría |
 |:-------:|----------|:--------:|:-------------:|:-------:|:--------:|:---------:|
-| 🥇 | **Matrícula Particular Pagado** | 0.2072 | 0.2020 | 0.3888 | 0.0309 | 📚 Educación |
-| 🥈 | **Superficie Total** | 0.1475 | 0.2265 | 0.0247 | 0.1914 | 📏 Física |
-| 🥉 | **SIMCE 4to Básico Lectura** | 0.1206 | 0.1900 | 0.1588 | 0.0128 | 📚 Educación |
-| 4️⃣ | **Superficie Construida** | 0.0671 | 0.0721 | 0.0150 | 0.1144 | 🏗️ Física |
-| 5️⃣ | **Baños** | 0.0580 | 0.0577 | 0.0159 | 0.1004 | 🚿 Física |
+| 🥇 | **Matrícula Particular Pagado** | 0,2072 | 0,2020 | 0,3888 | 0,0309 | 📚 Educación |
+| 🥈 | **Superficie Total** | 0,1475 | 0,2265 | 0,0247 | 0,1914 | 📏 Física |
+| 🥉 | **SIMCE 4to Básico Lectura** | 0,1206 | 0,1900 | 0,1588 | 0,0128 | 📚 Educación |
+| 4️⃣ | **Superficie Construida** | 0,0671 | 0,0721 | 0,0150 | 0,1144 | 🏗️ Física |
+| 5️⃣ | **Baños** | 0,0580 | 0,0577 | 0,0159 | 0,1004 | 🚿 Física |
 
 </div>
 
