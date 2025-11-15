@@ -736,6 +736,8 @@ Las 20 variables con mayor importancia ponderada fueron seleccionadas para el mo
 
 ---
 
+### 🎯 5 Análisis Exploratorio de Datos
+
 
 
 ![]()
