@@ -492,7 +492,7 @@ Luego de obtener todos estos datos de las diferentes fuentes, se procedió a rea
 | 🏠 Variables vivienda (CASEN) | 18 |
 | 🗺️ Variables geoespaciales | 3 |
 | **📊 TOTAL VARIABLES** | **163** |
-| **📝 REGISTROS INICIALES** | **5,943** |
+| **📝 REGISTROS INICIALES** | **5.943** |
 | **📍 COBERTURA** | **Región Metropolitana** |
 
 </div>
