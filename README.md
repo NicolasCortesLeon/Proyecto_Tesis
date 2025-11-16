@@ -740,9 +740,19 @@ Las 20 variables con mayor importancia ponderada fueron seleccionadas para el mo
 
 
 
-![]()
+![histogramas](docs/images/24histogramavariables.png)
 
-![]()
+![](docs/images/25distribucionprecio.png)
+
+![](docs/images/26matriculapagadoysubvencionado.png)
+
+![](docs/images/27puntajesimce.png)
+
+![](docs/images/28scatterplots.png)
+
+![](docs/images/29matrizdecorrelacion.png)
+
+![](docs/images/30mapadecalor.png)
 
 ![]()
 
