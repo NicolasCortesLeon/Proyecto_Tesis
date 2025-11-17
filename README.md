@@ -740,7 +740,7 @@ Las 20 variables con mayor importancia ponderada fueron seleccionadas para el mo
 
 Aquí tenemos todas las formas de distribución de nuestras 20 variables, procederé a realizar un análisis de datos exploratorio ahora, ya que no tenía mucho sentido realizarlo para más de 160 variables, además de no tener sentido era poco eficiente, por lo que luego de el feature importance me parece que realizarle un análisis de datos exploratorio ahora es lo más conveniente. A simple vista se puede evidenciar que hay varias formas de distribución sesgadas a la izquierda, algunas distribuciones bimodales, pero pocas distribuciones normales, vamos a desglosar y analizar con mejor detalle las variables más interesantes.
 
-![]()
+![](docs/images/24histogramavariables2da.png)
 
 La distribución del precio tiene un claro sesgo a las casas de menor costo, podemos ver que tiene una cola alargada a los rangos de $300M y $900M, por lo que esto nos sugiere que en ciertos modelos como SVM o regresión lineal será necesaria la transformación logarítmica natural del precio si queremos aprovechar de mejor manera estos modelos normalizando el precio.
 
@@ -756,11 +756,12 @@ Ahora por el lado de los puntajes simce de lenguaje y matemáticas, también se 
 
 Por el lado de los scatterplots, podemos ver varias correlaciones de todas las variables con el precio, que nos pueden indicar cierta heteroscedasticidad en variables como, precio y superficie total, superficie construida y con la latitud en menor medida, es posible reducir o eliminar la heteroscedasticidad de estas variables con el precio mediante el logaritmo natural, es una herramienta efectiva para ello.
 
-![]()
+![](docs/images/28scatterplots2da.png)
 
+Además podemos darnos cuenta de que tan fuerte son las correlaciones lineales con el precio, como también correlaciones entre variables, esto nos puede ayudar a identificar por ejemplo la fuerza de la multicolinealidad entre variables como, el simce de 4to básico de lectura y la matrícula particulares pagados, ingreso promedio y simce 4to básico matemáticas. Pero también nos permite cuantificar de mejor manera entre 0 a 1 la correlación entre el precio, ya que aunque scatterplots nos ayuda a identificar correlaciones, la matriz de correlación nos ayuda de mejor manera a identificar la fuerza de cada correlación.
 
+![](docs/images/29matrizdecorrelacion2da.png)
 
-![]()
 
 ![](docs/images/30mapadecalor.png)
 
