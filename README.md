@@ -736,35 +736,131 @@ Las 20 variables con mayor importancia ponderada fueron seleccionadas para el mo
 
 ---
 
-### 🎯 5 Análisis Exploratorio de Datos
+## 🎯 5. Análisis Exploratorio de Datos
 
-Aquí tenemos todas las formas de distribución de nuestras 20 variables, procederé a realizar un análisis de datos exploratorio ahora, ya que no tenía mucho sentido realizarlo para más de 160 variables, además de no tener sentido era poco eficiente, por lo que luego de el feature importance me parece que realizarle un análisis de datos exploratorio ahora es lo más conveniente. A simple vista se puede evidenciar que hay varias formas de distribución sesgadas a la izquierda, algunas distribuciones bimodales, pero pocas distribuciones normales, vamos a desglosar y analizar con mejor detalle las variables más interesantes.
+Tras la selección de las 20 variables más relevantes mediante feature importance, se procede con un análisis exploratorio detallado. Este enfoque es más eficiente que analizar las +160 variables iniciales, permitiendo concentrar el análisis en las características verdaderamente predictivas del precio de vivienda.
 
-![](docs/images/24histogramavariables2da.png)
+### 📊 Distribución General de Variables
 
-La distribución del precio tiene un claro sesgo a las casas de menor costo, podemos ver que tiene una cola alargada a los rangos de $300M y $900M, por lo que esto nos sugiere que en ciertos modelos como SVM o regresión lineal será necesaria la transformación logarítmica natural del precio si queremos aprovechar de mejor manera estos modelos normalizando el precio.
+El panorama inicial de las 20 variables seleccionadas revela patrones diversos:
+- Múltiples distribuciones con sesgo izquierdo
+- Presencia de distribuciones bimodales
+- Pocas distribuciones normales
 
-![](docs/images/25distribucionprecio.png)
+Esta diversidad sugiere la necesidad de transformaciones específicas según el modelo de ML a utilizar.
 
-Las distribuciones de los colegios particulares pagados y subvencionados tienen ciertas diferencias, mientras que la de las matrículas subvencionadas se ve más claramente una distribución bimodal, la de los particulares subvencionados no se ve de forma clara su distribución, pero si se ve que tiene una alta concentración de matrículas en rangos de entre 3000 y 6000.
+![Distribución de las 20 variables seleccionadas](docs/images/24histogramavariables2da.png)
 
-![](docs/images/26matriculapagadoysubvencionado.png)
+---
 
-Ahora por el lado de los puntajes simce de lenguaje y matemáticas, también se puede notar cierta distribución bimodal en 275 termina y comienzan las modas la siguiente en el caso de matemáticas, y en lenguaje 285 termina y comienzan las modas, podemos además observar cierto valor con una frecuencia alta en matemáticas, aproximadamente 270 en el cual tiene una frecuencia mayor a 800.
+### 💰 Variable Objetivo: Precio de Vivienda
 
-![](docs/images/27puntajesimce.png)
+La distribución del precio presenta un **marcado sesgo hacia viviendas de menor costo**, con una cola larga que se extiende hacia los rangos de $300M y $900M.
 
-Por el lado de los scatterplots, podemos ver varias correlaciones de todas las variables con el precio, que nos pueden indicar cierta heteroscedasticidad en variables como, precio y superficie total, superficie construida y con la latitud en menor medida, es posible reducir o eliminar la heteroscedasticidad de estas variables con el precio mediante el logaritmo natural, es una herramienta efectiva para ello.
+**Implicaciones para el modelado:**
+- Se requerirá transformación logarítmica para modelos como SVM y Regresión Lineal
+- Esta transformación ayudará a normalizar la distribución y mejorar el desempeño del modelo
 
-![](docs/images/28scatterplots2da.png)
+![Distribución del precio](docs/images/25distribucionprecio.png)
 
-Además podemos darnos cuenta de que tan fuerte son las correlaciones lineales con el precio, como también correlaciones entre variables, esto nos puede ayudar a identificar por ejemplo la fuerza de la multicolinealidad entre variables como, el simce de 4to básico de lectura y la matrícula particulares pagados, ingreso promedio y simce 4to básico matemáticas. Pero también nos permite cuantificar de mejor manera entre 0 a 1 la correlación entre el precio, ya que aunque scatterplots nos ayuda a identificar correlaciones, la matriz de correlación nos ayuda de mejor manera a identificar la fuerza de cada correlación.
+---
 
-![](docs/images/29matrizdecorrelacion2da.png)
+### 🏫 Características Educacionales
+
+#### Matrícula por Tipo de Establecimiento
+
+Las distribuciones de colegios particulares pagados y subvencionados muestran comportamientos distintos:
+
+- **Subvencionados**: Distribución bimodal claramente definida
+- **Particulares pagados**: Alta concentración de matrículas en el rango de 3,000-6,000 estudiantes
+
+![Matrícula por tipo de establecimiento](docs/images/26matriculapagadoysubvencionado.png)
+
+#### Puntajes SIMCE
+
+Tanto en Lenguaje como en Matemáticas se observan **distribuciones bimodales**:
+
+- **Matemáticas**: Las modas se separan en torno a 275 puntos, con un pico notable cerca de 270 (frecuencia >800)
+- **Lenguaje**: Separación de modas alrededor de 285 puntos
+
+![Puntajes SIMCE](docs/images/27puntajesimce.png)
+
+---
+
+### 🔍 Análisis de Relaciones: Scatterplots
+
+Los gráficos de dispersión revelan correlaciones importantes con el precio y posibles problemas de **heteroscedasticidad** en:
+- Superficie total
+- Superficie construida  
+- Latitud (en menor medida)
+
+**Solución propuesta**: Aplicar transformación logarítmica para estabilizar la varianza.
+
+![Scatterplots de variables vs precio](docs/images/28scatterplots2da.png)
+
+---
+
+### 📈 Matriz de Correlación
+
+La matriz de correlación cuantifica la fuerza de las relaciones lineales entre variables en una escala de 0 a 1, revelando tanto las variables más predictivas del precio como problemas potenciales de multicolinealidad que deben abordarse.
+
+![Matriz de correlación](docs/images/29matrizdecorrelacion2da.png)
+
+#### 🎯 Correlaciones Fuertes con el Precio
+
+Las variables con mayor poder predictivo sobre el precio de vivienda son:
+
+| Variable | Correlación | Interpretación |
+|----------|-------------|----------------|
+| **Superficie Total** | 0.70 | Relación directa muy fuerte |
+| **SIMCE 4° Básico Lectura** | 0.68 | Indicador socioeconómico del sector |
+| **SIMCE 4° Básico Matemáticas** | 0.67 | Indicador socioeconómico del sector |
+| **Ingreso Promedio** | 0.66 | Poder adquisitivo de la zona |
+| **Matrícula Particulares Pagados** | 0.64 | Refleja nivel socioeconómico del área |
+
+#### ⚠️ Multicolinealidad Detectada
+
+Se identificaron **tres grupos principales de variables altamente correlacionadas** entre sí y es que estas correlaciones nos permiten identificar
 
 
-![](docs/images/30mapadecalor.png)
+Variables correlacionadas con **SIMCE 4° Básico Lectura** (0.68 con precio):
+- **Matrícula particulares pagados**: r = 0.88
+- **Ingreso promedio**: r = 0.86
+- **SIMCE 4° Básico Matemáticas**: r = 0.97
 
+
+
+Variables correlacionadas con **Empresas Financieras y Seguros** (0.47 con precio):
+- **Empresas otras actividades 2023**: r = 0.78
+- **Trabajadores información y comunicaciones 2023**: r = 0.91
+- **Trabajadores otras actividades 2023**: r = 0.80
+
+
+
+Variables correlacionadas con **Pobreza por Ingresos** (-0.53 con precio):
+- **SIMCE 4° Básico Lectura**: r = -0.74
+- **Ingreso promedio**: r = -0.79
+- **SIMCE 4° Básico Matemáticas**: r = -0.66
+
+
+
+---
+
+### 🗺️ Distribución Geográfica de Precios
+
+El mapa de calor espacial revela patrones geográficos claros:
+
+| Zona | Característica de Precios |
+|------|---------------------------|
+| **Sur** | Concentración de viviendas de menor valor |
+| **Noreste** | Mayor concentración de propiedades de alto valor |
+| **Noroeste** | Presencia moderada de viviendas de mayor valor |
+
+**Zona de transición**: Entre las latitudes -33.3 y -33.2 se observa un incremento notable en los precios.
+
+![Mapa de calor geográfico](docs/images/30mapadecalor.png)
+
+---
 ![]()
 
 
