@@ -718,6 +718,8 @@ Las 20 variables con mayor importancia ponderada fueron seleccionadas para el mo
 
 </details>
 
+---
+
 #### 🎯 Categorización de Variables Seleccionadas
 
 <div align="center">
@@ -733,6 +735,12 @@ Las 20 variables con mayor importancia ponderada fueron seleccionadas para el mo
 </div>
 
 >  El modelo confirma que el **precio de una vivienda no solo depende de sus características físicas**, sino que está fuertemente influenciado por el **contexto socioeconómico y educacional** del sector. Las comunas con mejores colegios particulares, mayor rendimiento SIMCE e ingresos más altos tienen precios significativamente más elevados, independientemente del tamaño de la propiedad.
+
+---
+
+### 🔬 4.10 Eliminación de Multicolinealidad mediante Análisis de Correlación de Pearson
+
+Luego tras aplicar feature importance y seleccionar las 20 variables más predictivas, se van a usar 3 tipos de dataframes para entrenar las redes neuronales, esto para comprobar el impacto de entrenar las redes neuronales con las +160 variables, con 20 variables obtenidas del feature importance, y otro con las variables del feature importance, pero eliminando las variables que presenten alta correlación entre sí, para eliminar multicolinealidad, el criterio usado será eliminar toda variable con un coeficiente de Pearson mayor a 0,8.
 
 ---
 
@@ -861,10 +869,18 @@ El mapa de calor espacial revela patrones geográficos claros:
 ![Mapa de calor geográfico](docs/images/30mapadecalor.png)
 
 ---
+
+
+
+
+## 5.💡 Resultados y Conclusiones
+
 ![]()
 
+![]()
 
-## 4.💡 Resultados y Conclusiones
+![]()
+
 
 
 <div align="center">
