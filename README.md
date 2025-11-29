@@ -740,7 +740,23 @@ Las 20 variables con mayor importancia ponderada fueron seleccionadas para el mo
 
 ### 🔬 4.10 Eliminación de Multicolinealidad mediante Análisis de Correlación de Pearson
 
+Tras aplicar Feature Importance y seleccionar las 20 variables más predictivas, se van a entrenar las redes neuronales utilizando tres diferentes de datasets:
+
+1. **Dataset completo**: Todas las variables originales (+160 features)
+2. **Dataset Feature Importance**: Las 20 variables seleccionadas por Feature Importance
+3. **Dataset reducido**: Las variables del Feature Importance, eliminando aquellas con alta correlación entre sí
+
 Luego tras aplicar feature importance y seleccionar las 20 variables más predictivas, se van a usar 3 tipos de dataframes para entrenar las redes neuronales, esto para comprobar el impacto de entrenar las redes neuronales con las +160 variables, con 20 variables obtenidas del feature importance, y otro con las variables del feature importance, pero eliminando las variables que presenten alta correlación entre sí, para eliminar multicolinealidad, el criterio usado será eliminar toda variable con un coeficiente de Pearson mayor a 0,8.
+
+Aquí está la matriz de correlación sin haber eliminado aún las variables con alta correlación entre sí, como se puede ver hay varias variables con coeficiente de Pearson mayor a 0,8.
+
+![](docs/images/29matrizdecorrelacion2da.png)
+
+Luego de la limpieza en relación al coeficiente de Pearson nos quedamos con 12 variables independientes y la variable dependiente precio, esto para luego entrenar 3 datasets distintos en la red neuronal, uno con las 160+ variables, otro con las 20 variables obtenidas del feature importance y la última que está hecha con base en las 20 variables del feature importance pero eliminando la multicolinealidad.
+
+![](docs/images/39Matrizcorrelacionreducida.png)
+
+Esto nos permitira más adelante poder ver que tanto afecta al rendimiento de una red neuronal por ejemplo la presencia de multicolinealidad, como también que tanto afecta el hecho de usar más de 160 variables vs usar solo las variables obtenidas del feature importance.
 
 ---
 
