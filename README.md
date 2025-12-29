@@ -1,4 +1,4 @@
-<div align="center">
+<img width="105" height="109" alt="image" src="https://github.com/user-attachments/assets/c423fd67-62da-4266-82dc-c0aa9f3a833d" /><img width="105" height="109" alt="image" src="https://github.com/user-attachments/assets/e1a076a7-9597-4942-a306-abc899804c6b" /><div align="center">
 
 # 🏠 Predicción de Precios de Casas con Machine Learning
 ![Estado](https://img.shields.io/badge/Estado-En%20Progreso-yellow.svg)
@@ -855,7 +855,7 @@ El mapa de calor espacial revela patrones geográficos claros:
 
 ---
 
-## 6.💡 Entrenamiento y Validacion Cruzada
+## 6.💡 Entrenamiento 
 
 ### 🔍 6.1 Entrenamiento MLP
 
@@ -883,16 +883,19 @@ Por otro lado, el rendimiento de la regresión lineal y las máquinas de soporte
 
 ---
 
-### 🔍 6.4 Validación Cruzada y Análisis de Robustez
+## 7.💡 Validación Cruzada y Optimización de hiperparametros
 
-Para identificar cualquier problema en el entrenamiento o posible sobreajuste del modelo, se aplicó **validación cruzada por K-Fold (K-Fold = 5)**, evaluando la consistencia del rendimiento en diferentes particiones de los datos.
+### 🔍 7.1 Validación Cruzada y Análisis de Robustez
+
+Para identificar cualquier problema en el entrenamiento o posible sobre ajuste del modelo, se aplicó **validación cruzada por K-Fold (K-Fold = 5)**, evaluando la consistencia del rendimiento en diferentes particiones de los datos. Pero también la validación cuzada nos ayuda a ver cual es el verdadero rendimiento del modelo, ya que puede ocurrir que tenga diferencias entre el rendimiento del test y el rendimiento en un ambiente real y datos nuevos.
+
+Como se puede ver la validación cruzada fue aplicada teniendo como valor objetivo el coeficiente de determinación, y podemos ver que en general el promedio comparando los modelos basados en árboles de decisión y el MLP son bastante similares, con una ligera ventaja por parte de los modelos basados en árboles de decisión.
 
 ![](docs/images/33ValidacionCruzada.png)
 
-#### 🔬 Análisis de Resultados
+#### 🔬 Análisis de Validación Cruzada
 
 **Observaciones clave:**
-
 ✅ **Rendimiento consistente** - Los tres modelos muestran R² relativamente similar en todos los folds (≈0.86)
 
 ✅ **Baja variabilidad** - Desviación estándar < 0.013 indica estabilidad en las predicciones
@@ -900,6 +903,8 @@ Para identificar cualquier problema en el entrenamiento o posible sobreajuste de
 🏆 **LightGBM lidera marginalmente** - R² promedio de 0.8622, aunque la mejora es prácticamente marginal
 
 📊 **No hay evidencia de overfitting** - La consistencia entre folds descarta sobreajuste en todos los modelos
+
+📊**Los modelos basados en árboles de decisión lideran ligeramente** - RF, XGB y LGBM son ligeramente más competentes que las redes neuronales, pero se benefician mutuamente a la hora de entrenarlos de forma paralela.
 
 > **💡 Interpretación:** Tres modelos se basan en **árboles de decisiones (RF, XGB, LGBM)**, lo que explica su rendimiento similar. Sus diferencias se manifiestan principalmente en, ⚡velocidad de cómputo, 🎯capacidad predictiva, 🔍interpretabilidad o 💻eficiencia de memoria, pero estas diferencias se ven reflejadas en conjuntos de datos más grandes y extensos, con incluso más variables que las estudiadas aquí. Ademas de que los modelos de arboles de decision en una medida no muy grande mejores en rendimiento que las redes neuronales MLP.
 > No se aplico cross validation a LR y SVM debido a que estos por la naturaleza de los modelos no se sobreajustan
