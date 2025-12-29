@@ -627,39 +627,8 @@ Se entrenaron y compararon **6 algoritmos de Machine Learning** diferentes para 
 
 ---
 
-### 🔍 4.8 Validación Cruzada y Análisis de Robustez
 
-Para identificar cualquier problema en el entrenamiento o posible sobreajuste del modelo, se aplicó **validación cruzada por K-Fold** con k=5, evaluando la consistencia del rendimiento en diferentes particiones de los datos.
-
-#### 📊 Resultados de Validación Cruzada (K-Fold = 5)
-
-<div align="center">
-
-| Modelo | Fold 1 | Fold 2 | Fold 3 | Fold 4 | Fold 5 | **R² Promedio** | Desv. Estándar |
-|:-------|:------:|:------:|:------:|:------:|:------:|:---------------:|:--------------:|
-| **Random Forest** | 0,8566 | 0,8395 | 0,8655 | 0,8594 | 0,8738 | **0,8590** | 0,0114 |
-| **XGBoost** | 0,8660 | 0,8384 | 0,8665 | 0,8572 | 0,8710 | **0,8598** | 0,0116 |
-| **LightGBM** | 0,8646 | 0,8411 | 0,8761 | 0,8554 | 0,8739 | **0,8622** | 0,0129 |
-
-</div>
-
-#### 🔬 Análisis de Resultados
-
-**Observaciones clave:**
-
-✅ **Rendimiento consistente** - Los tres modelos muestran R² relativamente similar en todos los folds (≈0.86)
-
-✅ **Baja variabilidad** - Desviación estándar < 0.013 indica estabilidad en las predicciones
-
-🏆 **LightGBM lidera marginalmente** - R² promedio de 0.8622, aunque la mejora es prácticamente marginal
-
-📊 **No hay evidencia de overfitting** - La consistencia entre folds descarta sobreajuste
-
-> **💡 Interpretación:** Los tres modelos se basan en **árboles de decisiones**, lo que explica su rendimiento similar. Sus diferencias se manifiestan principalmente en, ⚡velocidad de cómputo, 🎯capacidad predictiva, 🔍interpretabilidad o 💻eficiencia de memoria, pero estas diferencias se ven reflejadas en conjuntos de datos más grandes y extensos, con incluso más variables que las estudiadas aquí.
-
----
-
-### 🎯 4.9 Feature Importance: Identificación de Variables Clave
+### 🎯 4.8 Feature Importance: Identificación de Variables Clave
 
 Para optimizar el modelo y mejorar la interpretabilidad, se realizó un **análisis de importancia de variables** en los tres mejores modelos, identificando cuáles características tienen mayor impacto en la predicción de precios, se normalizaron los 3 modelos para igualar su peso, se calculó un promedio por variable y se seleccionaron las 20 variables más importantes en el promedio de los 3 modelos.
 
@@ -886,10 +855,58 @@ El mapa de calor espacial revela patrones geográficos claros:
 
 ---
 
+## 6.💡 Entrenamiento y Validacion Cruzada
+
+### 🔍 6.1 Entrenamiento MLP
+
+Como antes habíamos explicado, se van a entrenar 3 redes neuronales con la misma arquitectura (MLP), la diferencias eran sus parámetros y los datos los cuales van a alimentar cada red neuronal, por ejemplo se entrenara una MLP con todas las variables sin ningún filtro, en este caso son un total de 163 variables, otra MLP se entrenara con 20 variables, filtrando basándonos en el feature importance previamente realizado en xgb, lgbm y rf, por último se entrenó una MLP eliminando la multicolinealidad de las 20 variables anteriores obtenidas del feature importance, ya había hablado de esto antes pero lo reitero.
+
+Podemos ver que el rendimiento aumenta en los dos casos, cuando se usan 20 variables como también cuando se usan 12 variables eliminando multicolinealidad, el aumento del rendimiento es claro en estos casos por lo que podemos darnos cuenta de que aunque las redes neuronales manejan bien múltiples variables, y maneja bien la multicolinealidad, estas dos afectan al rendimiento de la misma.
+
+![MLP](docs/images/31EntrenamientoMLP.png)
+
+---
+
+### 🔍 6.2 Entrenamiento RF XGB LGBM
+
+Vamos a volver a ver a recapitular los resultados de los modelos basados en árboles de decisión, y podemos apreciar como en general los 3 modelos tienen rendimiento similar, sin que ninguno destaque sobre otro. Lo de mayor utilidad con base en estos 3 modelos fue el feature importance, ya que fue la base para probar distintas formas de entrenar las MLP anteriores.
+
+![](docs/images/20EntrenamientoModelos.png)
+
+---
+
+### 🔍 6.3 Entrenamiento RL SVM
+
+Por otro lado, el rendimiento de la regresión lineal y las máquinas de soporte vectorial son notoriamente peores que los modelos de árboles de decisión o las MLP. Con mayores errores y menor explicatividad. Por otro lado, se usó el logaritmo natural del precio para aumentar el rendimiento del R2 para normalizar la variable a predecir, ya que al no tener normalizada la variable a predecir en regresión lineal o máquinas de soporte vectoriales se ve muy mermado el R2 en los 2 modelos.
+
+![](docs/images/32EntrenamientoLRSVM.png)
+
+---
+
+### 🔍 6.4 Validación Cruzada y Análisis de Robustez
+
+Para identificar cualquier problema en el entrenamiento o posible sobreajuste del modelo, se aplicó **validación cruzada por K-Fold (K-Fold = 5)**, evaluando la consistencia del rendimiento en diferentes particiones de los datos.
+
+![](docs/images/33ValidacionCruzada.png)
+
+#### 🔬 Análisis de Resultados
+
+**Observaciones clave:**
+
+✅ **Rendimiento consistente** - Los tres modelos muestran R² relativamente similar en todos los folds (≈0.86)
+
+✅ **Baja variabilidad** - Desviación estándar < 0.013 indica estabilidad en las predicciones
+
+🏆 **LightGBM lidera marginalmente** - R² promedio de 0.8622, aunque la mejora es prácticamente marginal
+
+📊 **No hay evidencia de overfitting** - La consistencia entre folds descarta sobreajuste en todos los modelos
+
+> **💡 Interpretación:** Tres modelos se basan en **árboles de decisiones (RF, XGB, LGBM)**, lo que explica su rendimiento similar. Sus diferencias se manifiestan principalmente en, ⚡velocidad de cómputo, 🎯capacidad predictiva, 🔍interpretabilidad o 💻eficiencia de memoria, pero estas diferencias se ven reflejadas en conjuntos de datos más grandes y extensos, con incluso más variables que las estudiadas aquí. Ademas de que los modelos de arboles de decision en una medida no muy grande mejores en rendimiento que las redes neuronales MLP.
+> No se aplico cross validation a LR y SVM debido a que estos por la naturaleza de los modelos no se sobreajustan
+
+---
 
 
-
-## 5.💡 Resultados y Conclusiones
 
 ![]()
 
