@@ -909,8 +909,15 @@ Como se puede ver la validación cruzada fue aplicada teniendo como valor objeti
 > **💡 Interpretación:** Tres modelos se basan en **árboles de decisiones (RF, XGB, LGBM)**, lo que explica su rendimiento similar. Sus diferencias se manifiestan principalmente en, ⚡velocidad de cómputo, 🎯capacidad predictiva, 🔍interpretabilidad o 💻eficiencia de memoria, pero estas diferencias se ven reflejadas en conjuntos de datos más grandes y extensos, con incluso más variables que las estudiadas aquí. Ademas de que los modelos de arboles de decision en una medida no muy grande mejores en rendimiento que las redes neuronales MLP.
 > No se aplico cross validation a LR y SVM debido a que estos por la naturaleza de los modelos no se sobreajustan
 
----
+### 🔍 7.1 Optimización de Hiperparametros
 
+**Optimización Hiperparametros random forest**
+
+Podemos notar una mejora sustancial, principalemente del MAE y MAPE al optimizar hiperparametros en random forest
+
+![](docs/images/35OptimizacionHiperParametrosRF.png)
+
+---
 
 
 ![]()
